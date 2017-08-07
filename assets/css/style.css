@@ -1,0 +1,28 @@
+.basic 
+{
+	height: 200px;
+	width: 200px;
+	background-color: grey;
+	color: white;
+	margin: 20px;
+	text-align: center;
+	position: relative;
+}
+
+h3 
+{
+	position: absolute;
+	top: 30%;
+	left: 10%;
+}
+
+.crystal 
+{
+	height: 150px;
+	width: 150px;
+	background-color: grey;
+	color: white;
+	margin: 20px;
+	text-align: center;
+	position: relative;
+}
