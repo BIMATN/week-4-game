@@ -2,15 +2,15 @@
 
 //Variables
 
-var score;
+var score = 0;
 var crystalA;
 var crystalB;
 var crystalC;
 var crystalD;
 var randomNumber;
 var userChoice;
-var wins;
-var losses;
+var wins=0;
+var losses=0;
 
 //psuedo
 /*
@@ -21,21 +21,92 @@ var losses;
 5. game restarts with new values but tracks their win/loss history
 */
 
-//1.
-function getRandomIntInclusive(min, max) //function for inclusive random value between two number, thanks mozilla!
-{
-  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
-}
 
-var randomNumber = getRandomIntInclusive(19,120);
-var crystalA = getRandomIntInclusive(1,12);
-var crystalB = getRandomIntInclusive(1,12);
-var crystalC = getRandomIntInclusive(1,12);
-var crystalD = getRandomIntInclusive(1,12);
 
-console.log(randomNumber);
-console.log(crystalA);
-console.log(crystalB);
-console.log(crystalC);
-console.log(crystalD);
+$(document).ready(function(){
+
+	//1.
+	function getRandomIntInclusive(min, max) //function for inclusive random value between two number, thanks mozilla!
+	{
+	  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+	}
+
+	randomNumber = getRandomIntInclusive(19,120);
+	$("#numberToReach").html(randomNumber);
+	$("#score").html(score);
+
+
+	//2.
+	crystalA = getRandomIntInclusive(1,12);
+	crystalB = getRandomIntInclusive(1,12);
+	crystalC = getRandomIntInclusive(1,12);
+	crystalD = getRandomIntInclusive(1,12);
+
+
+	//3.
+	$('#crystalA').click(function()
+		{
+			score+=crystalA;
+			$("#score").html(score);
+			winLossCheck();
+		}
+	);
+	$('#crystalB').click(function()
+		{
+			score+=crystalB;
+			$("#score").html(score);
+			winLossCheck();
+		}
+	);
+	$('#crystalC').click(function()
+		{
+			score+=crystalC;
+			$("#score").html(score);
+			winLossCheck();
+		}
+	);
+	$('#crystalD').click(function()
+		{
+			score+=crystalD;
+			$("#score").html(score);
+			winLossCheck();
+		}
+	);
+
+	//4.
+	function winLossCheck()
+	{
+		if(score === randomNumber)
+		{
+			wins++;
+			$("#wins").html("Wins: "+wins);
+			randomNumber = getRandomIntInclusive(19,120);
+			$("#numberToReach").html(randomNumber);
+			crystalA = getRandomIntInclusive(1,12);
+			crystalB = getRandomIntInclusive(1,12);
+			crystalC = getRandomIntInclusive(1,12);
+			crystalD = getRandomIntInclusive(1,12);
+			score = 0;
+			$("#score").html(score);
+		}
+		else if(score>randomNumber)
+		{
+			losses++;
+			$("#losses").html("Losses: "+losses);
+			randomNumber = getRandomIntInclusive(19,120);
+			$("#numberToReach").html(randomNumber);
+			crystalA = getRandomIntInclusive(1,12);
+			crystalB = getRandomIntInclusive(1,12);
+			crystalC = getRandomIntInclusive(1,12);
+			crystalD = getRandomIntInclusive(1,12);
+			score = 0;
+			$("#score").html(score);
+		}
+	}
+
+});
+
+
+
+
 

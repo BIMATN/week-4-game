@@ -1,28 +1,25 @@
 .basic 
 {
-	height: 200px;
+	height:50px;
 	width: 200px;
 	background-color: grey;
 	color: white;
 	margin: 20px;
 	text-align: center;
-	position: relative;
-}
-
-h3 
-{
-	position: absolute;
-	top: 30%;
-	left: 10%;
 }
 
 .crystal 
 {
-	height: 150px;
-	width: 150px;
+	height: 50px;
+	width: 200px;
 	background-color: grey;
 	color: white;
 	margin: 20px;
 	text-align: center;
-	position: relative;
+}
+
+#winsAndLosses
+{
+	height: 100px;
+	width: 200px;
 }
