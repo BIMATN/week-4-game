@@ -21,7 +21,7 @@ h1
 	font-size: 60px;
 }
 
-h3,h2
+h3,h2,h4
 {
 	color: white;
 	font-weight: bold;
@@ -38,7 +38,7 @@ h3,h2
 	text-align: center;
 }
 
-.banner2Good
+.banner2Good, .obiHD, .playerHealthDisplay
 {
 	color: red;
 	font-family: 'Orbitron', sans-serif;
