@@ -7,7 +7,8 @@ var obi =
 	name: "Obi Wan Kenobi",
 	health: 120,
 	hitPoints: 12,
-	counter: 12
+	counter: 12,
+	html: "<div class=charBoxGood><img src=assets/images/masterObiwan.jpg class=img-responsive img-thumbnail id=obiPic alt=Obi Wan Kenobi><h3 class=banner1Good>Master Obiwan</h3><h3 class=banner2Good>120 HP</h3></div>"
 }
 
 var luke = 
@@ -15,7 +16,9 @@ var luke =
 	name: "Luke Skywalker",
 	health: 100,
 	hitPoints: 10,
-	counter: 10
+	counter: 10,
+	html: "<div class=charBoxGood><img src=assets/images/masterLuke.jpg class=img-responsive img-thumbnail id=lukePic alt=Luke Skywalker><h3 class=banner1Good>Master Luke</h3><h3 class=banner2Good>100 HP</h3></div>"
+
 }
 
 var sid = 
@@ -23,7 +26,9 @@ var sid =
 	name: "Darth Sidious",
 	health: 150,
 	hitPoints: 15,
-	counter: 15
+	counter: 15,
+	html: "<div class=charBoxBad><img src=assets/images/darth_sidious.jpg class=img-responsive img-thumbnail id=sidPic alt=Darth Sidious><h3 class=banner1Bad>Darth Sidious</h3><h3 class=banner2Bad>180 HP</h3></div>"
+
 }
 
 var maul = 
@@ -31,7 +36,9 @@ var maul =
 	name: "Darth Maul",
 	health: 180,
 	hitPoints: 18,
-	counter: 18
+	counter: 18,
+	html: "<div class=charBoxBad><img src=assets/images/darthMaul.jpeg class=img-responsive img-thumbnail id=maulPic alt=Darth Maul><h3 class=banner1Bad>Darth Maul</h3><h3 class=banner2Bad>150 HP</h3></div>"
+
 }
 
 var playerHitPoints;
@@ -60,80 +67,84 @@ $(document).ready(function(){
 
 //Select Player Character
 	
-$('#obi').click(function()
+$('#obiPic').click(function()
 		{
-			$('#obi').off("click");//disable click event
+			$('#obiPic').off("click");//disable click event
 			playerHitPoints = obi.hitPoints; //set points of object to player points for manipulation
 			playerHealth = obi.health; //set points of object to player points for manipulation
 			hitInc = obi.hitPoints;
-			$("#luke").empty(); //empty html contents
-			$("#sid").empty();	//empty html contents
-			$("#maul").empty();	//empty html contents
+			$("#pickLuke").empty(); //empty html contents
+			$("#pickDarthSid").empty();	//empty html contents
+			$("#pickDarthMaul").empty();	//empty html contents
 			$("#yourCharBottom").empty();	//empty html contents
-			$("#yourCharTop").html("Your Fighter:"); //Change location from bottom to top using trickery
+			$("#yourCharTop").html("Your Chosen Fighter"); //Change location from bottom to top using trickery
 			villainA=luke; //assign villain objects to villains
 			villainB=sid; //assign villain objects to villains
 			villainC=maul; //assign villain objects to villains
-			$("#villainA").html("luke"); //load names for villains
-			$("#villainB").html("sid"); //load names for villains
-			$("#villainC").html("maul"); //load names for villains
+			$("#villainA").html(villainA.html); //load villains
+			$("#villainB").html(villainB.html); //load villains
+			$("#villainC").html(villainC.html); //load villains
+			$("#chooseVillain").html("Choose Your Opponent"); //Choose Villain Text
 		}
 	);
-$('#luke').click(function()
+$('#lukePic').click(function()
 		{
-			$('#luke').off("click");//disable click event
+			$('#lukePic').off("click");//disable click event
 			playerHitPoints = luke.hitPoints;
 			playerHealth = luke.health;
 			hitInc = luke.hitPoints;
-			$("#obi").empty();
-			$("#sid").empty();
-			$("#maul").empty();
+			$("#pickObi").empty();
+			$("#pickDarthSid").empty();
+			$("#pickDarthMaul").empty();
 			$("#yourCharBottom").empty();
-			$("#yourCharTop").html("Your Fighter:");
+			$("#yourCharTop").html("Your Chosen Fighter");
 			villainA=obi;
 			villainB=sid;
 			villainC=maul;
-			$("#villainA").html("obi");
-			$("#villainB").html("sid");
-			$("#villainC").html("maul");
+			$("#villainA").html(villainA.html); //load villains
+			$("#villainB").html(villainB.html); //load villains
+			$("#villainC").html(villainC.html); //load villains
+			$("#chooseVillain").html("Choose Your Opponent"); //Choose Villain Text
 		}
 	);
-$('#sid').click(function()
+$('#sidPic').click(function()
 		{
-			$('#sid').off("click");//disable click event
+			$('#sidPic').off("click");//disable click event
 			playerHitPoints = sid.hitPoints;
 			playerHealth = sid.health;
 			hitInc = sid.hitPoints;
-			$("#obi").empty();
-			$("#luke").empty();
-			$("#maul").empty();
+			$("#pickObi").empty();
+			$("#pickLuke").empty();
+			$("#pickDarthMaul").empty();
 			$("#yourCharBottom").empty();
-			$("#yourCharTop").html("Your Fighter:");
+			$("#yourCharTop").html("Your Chosen Fighter");
 			villainA=obi;
 			villainB=luke;
 			villainC=maul;
-			$("#villainA").html("obi");
-			$("#villainB").html("luke");
-			$("#villainC").html("maul");
+			$("#villainA").html(villainA.html); //load villains
+			$("#villainB").html(villainB.html); //load villains
+			$("#villainC").html(villainC.html); //load villains
+			$("#chooseVillain").html("Choose Your Opponent"); //Choose Villain Text
 		}
 	);
-$('#maul').click(function()
+$('#maulPic').click(function()
 		{
-			$('#maul').off("click");//disable click event
+			$('#maulPic').off("click");//disable click event
 			playerHitPoints = maul.hitPoints;
 			playerHealth = maul.health;
 			hitInc = maul.hitPoints;
-			$("#obi").empty();
-			$("#luke").empty();
-			$("#sid").empty();
+			$("#pickObi").empty();
+			$("#pickLuke").empty();
+			$("#pickDarthSid").empty();
 			$("#yourCharBottom").empty();
-			$("#yourCharTop").html("Your Fighter:");
+			$("#yourCharTop").html("Your Chosen Fighter");
 			villainA=obi;
 			villainB=luke;
 			villainC=sid;
-			$("#villainA").html("obi");
-			$("#villainB").html("luke");
-			$("#villainC").html("sid");
+			$("#villainA").html(villainA.html); //load villains
+			$("#villainB").html(villainB.html); //load villains
+			$("#villainC").html(villainC.html); //load villains
+			$("#chooseVillain").html("Choose Your Opponent"); //Choose Villain Text
 		}
 	);
 
@@ -143,9 +154,10 @@ $('#villainA').click(function()
 		{
 			if(opponent.health < 1)
 			{
-				$("#villainA").empty(); //empty villain for move to bottom
-				$("#opponent").html(villainA.name); //add villain to bottom
 				opponent = villainA; //opponent adopts villain properties
+				$("#villainA").empty(); //empty villain for move to bottom
+				$("#opponent").html(opponent.html); //add villain to bottom
+				$("#opponentText").html("Your Chosen Opponent");
 				console.log("This is the new opponent health: " + opponent.health);
 			}
 			else
@@ -158,9 +170,10 @@ $('#villainB').click(function()
 		{
 			if(opponent.health < 1)
 			{
-				$("#villainB").empty(); //empty villain for move to bottom
-				$("#opponent").html(villainB.name); //add villain to bottom
 				opponent = villainB;
+				$("#villainB").empty(); //empty villain for move to bottom
+				$("#opponent").html(opponent.html); //add villain to bottom
+				$("#opponentText").html("Your Chosen Opponent");
 				console.log("This is the new opponent health: " + opponent.health);
 			}
 			else
@@ -173,9 +186,10 @@ $('#villainC').click(function()
 		{
 			if(opponent.health < 1)
 			{
-				$("#villainC").empty(); //empty villain for move to bottom
-				$("#opponent").html(villainC.name); //add villain to bottom
 				opponent = villainC;
+				$("#villainC").empty(); //empty villain for move to bottom
+				$("#opponent").html(opponent.html); //add villain to bottom
+				$("#opponentText").html("Your Chosen Opponent");
 				console.log("This is the new opponent health: " + opponent.health);
 			}
 			else
@@ -218,13 +232,6 @@ $('#attack').click(function()
 			}
 		}
 	);
-
-
-	/*console.log(maul);
-	console.log(luke);
-	console.log(sid);
-	console.log(obi);*/
-
 });
 
 

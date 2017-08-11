@@ -7,3 +7,89 @@
 	margin: 20px;
 	text-align: center;
 }
+
+body 
+{
+	background-image: url("../images/coruscant_At_Night.jpg") !important;
+}
+
+h1
+{
+	color: white;
+	font-family: 'Orbitron', sans-serif;
+	font-weight: bold;
+	font-size: 60px;
+}
+
+h3,h2
+{
+	color: white;
+	font-weight: bold;
+	font-family: 'Orbitron', sans-serif;
+}
+
+.banner1Good
+{
+	color: white;
+	font-family: 'Orbitron', sans-serif;
+	font-weight: bold;
+	/*opacity: .75;*/
+	margin: 0;
+	text-align: center;
+}
+
+.banner2Good
+{
+	color: red;
+	font-family: 'Orbitron', sans-serif;
+	/*opacity: .75;*/
+	margin: 0;
+	text-align: center;
+}
+
+.banner1Bad
+{
+	color: white;
+	font-family: 'Orbitron', sans-serif;
+	font-weight: bold;
+	/*opacity: .75;*/
+	margin: 0;
+	text-align: center;
+}
+
+.banner2Bad
+{
+	color: red;
+	font-family: 'Orbitron', sans-serif;
+	/*opacity: .75;*/
+	margin: 0;
+	text-align: center;
+}
+
+.charBoxGood
+{
+	position: relative;
+	width: 100%;
+	border: 2px solid green;
+}
+
+.charBoxBad
+{
+	position: relative;
+	width: 100%;
+	border: 2px solid red;
+}
+
+/*
+Photo Sources
+Coruscant
+https://vignette2.wikia.nocookie.net/starwars/images/5/5c/Coruscant_at_night.jpg/revision/latest?cb=20080610031227
+Darth Maul
+https://lumiere-a.akamaihd.net/v1/images/Darth-Maul_632eb5af.jpeg?region=75%2C42%2C1525%2C858&width=768
+Darth Sidious
+http://img08.deviantart.net/4c6d/i/2016/035/c/b/darth_sidious_by_lotsmanoff-d9qgia1.jpg
+Luke
+https://static1.comicvine.com/uploads/original/11118/111184078/5124660-6531264806-22292.jpg
+Obi Wan
+https://vignette2.wikia.nocookie.net/starwars/images/d/df/Masterobiwan.jpg/revision/latest/scale-to-width-down/250?cb=20080719000305
+*/
