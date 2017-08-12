@@ -29,7 +29,7 @@ var sid =
 {
 	name: "Darth Sidious",
 	health: 180,
-	hitPoints: 05,
+	hitPoints: 20,
 	counter: 25,
 	playerHtml: "<div class=charBoxBad><img src=assets/images/darth_sidious.jpg class=img-responsive img-thumbnail id=sidPic alt=Darth Sidious><h3 class=banner1>Darth Sidious</h3><h3 class=playerHealth>180 HP</h3></div>",
 	villainHtml: "<div class=charBoxBad><img src=assets/images/darth_sidious.jpg class=img-responsive img-thumbnail id=sidPic alt=Darth Sidious><h3 class=banner1>Darth Sidious</h3><h3 class=banner2>180 HP</h3></div>",
@@ -250,6 +250,8 @@ $("#attackAction").click(function()
 				$("#fightStats").html("You hit your opponent for " + player.hitPoints + " points");
 				$("#fightStats").append("<p>Your opponent hit you for " + opponent.counter + " points</p>");
 
+				setTimeout(function(){
+
 				if((opponent.health > 0 && player.health < 1) || (opponent.health < 1 && player.health < 1))//loss condition check
 				{
 					alert("You have lost your fight. Return to your master for further training.");
@@ -276,6 +278,8 @@ $("#attackAction").click(function()
 					}
 				}
 				player.hitPoints+=hitInc; //increase hit points
+
+				}, 100);
 			}
 			else
 			{
