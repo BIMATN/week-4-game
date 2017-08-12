@@ -8,7 +8,7 @@ var obi =
 	name: "Obi Wan Kenobi",
 	health: 120,
 	hitPoints: 12,
-	counter: 12,
+	counter: 8,
 	playerHtml: "<div class=charBoxGood><img src=assets/images/masterObiwan.jpg class=img-responsive img-thumbnail id=obiPic alt=Obi Wan Kenobi><h3 class=banner1>Master Obiwan</h3><h3 class=playerHealth>120 HP</h3></div>",
 	villainHtml: "<div class=charBoxGood><img src=assets/images/masterObiwan.jpg class=img-responsive img-thumbnail id=obiPic alt=Obi Wan Kenobi><h3 class=banner1>Master Obiwan</h3><h3 class=banner2>120 HP</h3></div>",
 	opponentHtml: "<div class=charBoxGood><img src=assets/images/masterObiwan.jpg class=img-responsive img-thumbnail id=obiPic alt=Obi Wan Kenobi><h3 class=banner1>Master Obiwan</h3><h3 class=opponentHealth>120 HP</h3></div>"
@@ -19,7 +19,7 @@ var luke =
 	name: "Luke Skywalker",
 	health: 100,
 	hitPoints: 10,
-	counter: 10,
+	counter: 5,
 	playerHtml: "<div class=charBoxGood><img src=assets/images/masterLuke.jpg class=img-responsive img-thumbnail id=lukePic alt=Luke Skywalker><h3 class=banner1>Master Luke</h3><h3 class=playerHealth>100 HP</h3></div>",
 	villainHtml: "<div class=charBoxGood><img src=assets/images/masterLuke.jpg class=img-responsive img-thumbnail id=lukePic alt=Luke Skywalker><h3 class=banner1>Master Luke</h3><h3 class=banner2>100 HP</h3></div>",
 	opponentHtml: "<div class=charBoxGood><img src=assets/images/masterLuke.jpg class=img-responsive img-thumbnail id=lukePic alt=Luke Skywalker><h3 class=banner1>Master Luke</h3><h3 class=opponentHealth>100 HP</h3></div>"
@@ -29,8 +29,8 @@ var sid =
 {
 	name: "Darth Sidious",
 	health: 180,
-	hitPoints: 15,
-	counter: 15,
+	hitPoints: 05,
+	counter: 25,
 	playerHtml: "<div class=charBoxBad><img src=assets/images/darth_sidious.jpg class=img-responsive img-thumbnail id=sidPic alt=Darth Sidious><h3 class=banner1>Darth Sidious</h3><h3 class=playerHealth>180 HP</h3></div>",
 	villainHtml: "<div class=charBoxBad><img src=assets/images/darth_sidious.jpg class=img-responsive img-thumbnail id=sidPic alt=Darth Sidious><h3 class=banner1>Darth Sidious</h3><h3 class=banner2>180 HP</h3></div>",
 	opponentHtml: "<div class=charBoxBad><img src=assets/images/darth_sidious.jpg class=img-responsive img-thumbnail id=sidPic alt=Darth Sidious><h3 class=banner1>Darth Sidious</h3><h3 class=opponentHealth>180 HP</h3></div>"
@@ -41,7 +41,7 @@ var maul =
 	name: "Darth Maul",
 	health: 150,
 	hitPoints: 18,
-	counter: 18,
+	counter: 20,
 	playerHtml: "<div class=charBoxBad><img src=assets/images/darthMaul.jpeg class=img-responsive img-thumbnail id=maulPic alt=Darth Maul><h3 class=banner1>Darth Maul</h3><h3 class=playerHealth>150 HP</h3></div>",
 	villainHtml: "<div class=charBoxBad><img src=assets/images/darthMaul.jpeg class=img-responsive img-thumbnail id=maulPic alt=Darth Maul><h3 class=banner1>Darth Maul</h3><h3 class=banner2>150 HP</h3></div>",
 	opponentHtml: "<div class=charBoxBad><img src=assets/images/darthMaul.jpeg class=img-responsive img-thumbnail id=maulPic alt=Darth Maul><h3 class=banner1>Darth Maul</h3><h3 class=opponentHealth>150 HP</h3></div>"
@@ -168,7 +168,7 @@ $('#villainA').click(function()
 				}
 				else
 				{
-					$("#chooseVillain").html("- - - Choose Your Next Opponent - - -"); //Choose Villain Text
+					$("#chooseVillain").html("- - - Your Next Opponent is Preparing for Battle - - -"); //Choose Villain Text
 				}
 			}
 			else
@@ -239,12 +239,18 @@ $("#attackAction").click(function()
 			{
 				opponent.health -= player.hitPoints;//update health of opponent
 				
-				player.health -= opponent.counter;//updating health of player
+				if(opponent.health>0)//player will not lose points if opponent dies from player attack
+				{				
+					player.health -= opponent.counter;//updating health of player
+				}
 			
 				$(".opponentHealth").html(opponent.health+" HP");//Update display health of opponent
 				$(".playerHealth").html(player.health+" HP");//Update display health of player
 
-				if(opponent.health > 0 && player.health < 1)
+				$("#fightStats").html("You hit your opponent for " + player.hitPoints + " points");
+				$("#fightStats").append("<p>Your opponent hit you for " + opponent.counter + " points</p>");
+
+				if((opponent.health > 0 && player.health < 1) || (opponent.health < 1 && player.health < 1))//loss condition check
 				{
 					alert("You have lost your fight. Return to your master for further training.");
 					location.reload();
@@ -252,7 +258,7 @@ $("#attackAction").click(function()
 
 				else if (opponent.health < 1 && player.health > 0)
 				{
-					if(villainA.health<1 && villainB.health<1 && villainC.health<1)
+					if(villainA.health<1 && villainB.health<1 && villainC.health<1)// complete win condition check
 					{
 						var playAgain = confirm("You are a powerful wielder of the force! All your enemies have fallen. Play Again?")
 						if(playAgain === true)
@@ -262,8 +268,9 @@ $("#attackAction").click(function()
 					}
 					else
 					{
-						alert("Your training has made you stronger, choose your next opponent.");
+						alert("Your training has made you stronger, choose your next opponent.");//single fight win condition check
 						$("#opponent").empty(); //empty villain category
+						$("#fightStats").empty();
 						$("#chooseVillain").html("- - - Choose Your Next Opponent - - -"); //Choose Villain Text
 						$("#opponentText").html("- - - Awaiting Next Opponent - - -");//Fight Text
 					}
