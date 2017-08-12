@@ -12,7 +12,6 @@ var obi =
 	playerHtml: "<div class=charBoxGood><img src=assets/images/masterObiwan.jpg class=img-responsive img-thumbnail id=obiPic alt=Obi Wan Kenobi><h3 class=banner1>Master Obiwan</h3><h3 class=playerHealth>120 HP</h3></div>",
 	villainHtml: "<div class=charBoxGood><img src=assets/images/masterObiwan.jpg class=img-responsive img-thumbnail id=obiPic alt=Obi Wan Kenobi><h3 class=banner1>Master Obiwan</h3><h3 class=banner2>120 HP</h3></div>",
 	opponentHtml: "<div class=charBoxGood><img src=assets/images/masterObiwan.jpg class=img-responsive img-thumbnail id=obiPic alt=Obi Wan Kenobi><h3 class=banner1>Master Obiwan</h3><h3 class=opponentHealth>120 HP</h3></div>"
-
 }
 
 var luke = 
@@ -73,7 +72,7 @@ $('#obiPic').click(function()
 			$("#pickDarthSid").empty();	//empty html contents so that character disapears
 			$("#pickDarthMaul").empty();	//empty html contents so that character disapears
 			$("#yourCharBottom").empty();	//empty html contents so that text disapears
-			$("#yourCharTop").html("Your Chosen Fighter"); //Change text location from bottom to top using trickery
+			$("#yourCharTop").html("Your Chosen Fighter:"); //Change text location from bottom to top using trickery
 			$("#pickObi").html(player.playerHtml);
 			$(".playerHealth").html(player.health+" HP");
 			villainA=luke; //assign villain objects to villains
@@ -94,7 +93,7 @@ $('#lukePic').click(function()
 			$("#pickDarthSid").empty();
 			$("#pickDarthMaul").empty();
 			$("#yourCharBottom").empty();
-			$("#yourCharTop").html("Your Chosen Fighter");
+			$("#yourCharTop").html("Your Chosen Fighter:");
 			$("#pickLuke").html(player.playerHtml);
 			$(".playerHealth").html(player.health+" HP");//Update health html to player object health
 			villainA=obi;
@@ -115,7 +114,7 @@ $('#sidPic').click(function()
 			$("#pickLuke").empty();
 			$("#pickDarthMaul").empty();
 			$("#yourCharBottom").empty();
-			$("#yourCharTop").html("Your Chosen Fighter");
+			$("#yourCharTop").html("Your Chosen Fighter:");
 			$("#pickDarthSid").html(player.playerHtml);
 			$(".playerHealth").html(player.health+" HP");//Update health html to player object health
 			villainA=obi;
@@ -136,7 +135,7 @@ $('#maulPic').click(function()
 			$("#pickLuke").empty();
 			$("#pickDarthSid").empty();
 			$("#yourCharBottom").empty();
-			$("#yourCharTop").html("Your Chosen Fighter");
+			$("#yourCharTop").html("Your Chosen Fighter:");
 			$("#pickDarthMaul").html(player.playerHtml);
 			$(".playerHealth").html(player.health+" HP");//Update health html to player object health
 			villainA=obi;
@@ -158,13 +157,13 @@ $('#villainA').click(function()
 				opponent = villainA; //opponent adopts villain object properties
 				$("#villainA").empty(); //empty villain for move to bottom
 				opponentHealth = villainA.health+" HP";
+				$("#opponentText").html("Your Chosen Opponent:");
 				$("#opponent").html(opponent.opponentHtml); //add villain to bottom
-				$("#opponentText").html("Your Chosen Opponent");
-				console.log("This is the new opponent health: " + opponent.health);
+				$("#attackButton").html("<button id = attack><h3 class=banner2>Attack</h3></button>");
 			}
 			else
 			{
-				alert("You can't seriously believe you are powerful enough to face two enemies. Focus on the one for now.")
+				alert("You can't seriously believe you are powerful enough to face two enemies. Focus on the one for now.");
 			}
 		}
 	);
@@ -174,13 +173,13 @@ $('#villainB').click(function()
 			{
 				opponent = villainB;
 				$("#villainB").empty(); //empty villain for move to bottom
+				$("#opponentText").html("Your Chosen Opponent:");
 				$("#opponent").html(opponent.opponentHtml); //add villain to bottom
-				$("#opponentText").html("Your Chosen Opponent");
-				console.log("This is the new opponent health: " + opponent.health);
+				$("#attackButton").html("<button id = attack><h3 class=banner2>Attack</h3></button>");
 			}
 			else
 			{
-				alert("You can't seriously believe you are powerful enough to face two enemies. Focus on the one for now.")
+				alert("You can't seriously believe you are powerful enough to face two enemies. Focus on the one for now.");
 			}
 		}
 	);
@@ -190,30 +189,29 @@ $('#villainC').click(function()
 			{
 				opponent = villainC;
 				$("#villainC").empty(); //empty villain for move to bottom
+				$("#opponentText").html("Your Chosen Opponent:");
 				$("#opponent").html(opponent.opponentHtml); //add villain to bottom
-				$("#opponentText").html("Your Chosen Opponent");
-				console.log("This is the new opponent health: " + opponent.health);
+				$("#attackButton").html("<button id=attack><h3 class=banner2>Attack</h3></button>");
 			}
 			else
 			{
-				alert("You can't seriously believe you are powerful enough to face two enemies. Focus on the one for now.")
+				alert("You can't seriously believe you are powerful enough to face two enemies. Focus on the one for now.");
 			}
 		}
 	);
 
 
 //Attack Process
-$('#attack').click(function()
+$("#attackButton").click(function()
 		{
-			console.log("this is my new opponent health after pressing attack: "+opponent.health);
 			if(opponent.health > 0 && player.health > 0)
 			{
-				opponent.health -= player.hitPoints;
+				opponent.health -= player.hitPoints;//update health of opponent
 				
 				player.health -= opponent.counter;//updating health of player
 			
-				$(".opponentHealth").html(opponent.health+" HP");//Update health html to player object health
-				$(".playerHealth").html(player.health+" HP");//Update health html to player object health
+				$(".opponentHealth").html(opponent.health+" HP");//Update display health of opponent
+				$(".playerHealth").html(player.health+" HP");//Update display health of player
 
 				if(opponent.health > 0 && player.health < 1)
 				{
@@ -227,7 +225,6 @@ $('#attack').click(function()
 					$("#opponent").empty(); //empty villain category
 				}
 				player.hitPoints+=hitInc; //increase hit points
-				console.log("my hit points "+player.hitPoints);
 			}
 			else
 			{
@@ -236,8 +233,3 @@ $('#attack').click(function()
 		}
 	);
 });
-
-
-
-
-

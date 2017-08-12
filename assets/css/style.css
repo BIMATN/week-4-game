@@ -51,6 +51,13 @@ h3,h2,h4
 	border: 2px solid red;
 }
 
+button
+{
+	margin: 80px !important;
+	width: 200px;
+	height:100px;
+}
+
 /*
 Photo Sources
 Coruscant
