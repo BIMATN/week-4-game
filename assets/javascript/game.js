@@ -81,7 +81,7 @@ $('#obiPic').click(function()
 			$("#villainA").html(villainA.villainHtml); //load villains
 			$("#villainB").html(villainB.villainHtml); //load villains
 			$("#villainC").html(villainC.villainHtml); //load villains
-			$("#chooseVillain").html("Choose Your Opponent"); //Choose Villain Text
+			$("#chooseVillain").html("- - - Choose Your Opponent - - -"); //Choose Villain Text
 		}
 	);
 $('#lukePic').click(function()
@@ -102,7 +102,7 @@ $('#lukePic').click(function()
 			$("#villainA").html(villainA.villainHtml); //load villains
 			$("#villainB").html(villainB.villainHtml); //load villains
 			$("#villainC").html(villainC.villainHtml); //load villains
-			$("#chooseVillain").html("Choose Your Opponent"); //Choose Villain Text
+			$("#chooseVillain").html("- - - Choose Your Opponent - - -"); //Choose Villain Text
 		}
 	);
 $('#sidPic').click(function()
@@ -123,7 +123,7 @@ $('#sidPic').click(function()
 			$("#villainA").html(villainA.villainHtml); //load villains
 			$("#villainB").html(villainB.villainHtml); //load villains
 			$("#villainC").html(villainC.villainHtml); //load villains
-			$("#chooseVillain").html("Choose Your Opponent"); //Choose Villain Text
+			$("#chooseVillain").html("- - - Choose Your Opponent - - -"); //Choose Villain Text
 		}
 	);
 $('#maulPic').click(function()
