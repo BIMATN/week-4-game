@@ -144,7 +144,7 @@ $('#maulPic').click(function()
 			$("#villainA").html(villainA.villainHtml); //load villains
 			$("#villainB").html(villainB.villainHtml); //load villains
 			$("#villainC").html(villainC.villainHtml); //load villains
-			$("#chooseVillain").html("Choose Your Opponent"); //Choose Villain Text
+			$("#chooseVillain").html("- - - Choose Your Opponent - - -"); //Choose Villain Text
 		}
 	);
 
@@ -157,9 +157,19 @@ $('#villainA').click(function()
 				opponent = villainA; //opponent adopts villain object properties
 				$("#villainA").empty(); //empty villain for move to bottom
 				opponentHealth = villainA.health+" HP";
-				$("#opponentText").html("Your Chosen Opponent:");
-				$("#opponent").html(opponent.opponentHtml); //add villain to bottom
-				$("#attackButton").html("<button id = attack><h3 class=banner2>Attack</h3></button>");
+				$("#opponentText").html("- - - " + player.name + " VS " + villainA.name + " - - -");//Fight Text
+				$("#player").html(player.playerHtml);//add player to fight zone
+				$(".playerHealth").html(player.health+" HP");//Update health html to player object health
+				$("#opponent").html(opponent.opponentHtml); //add villain to fight zone
+				$("#attackAction").html("<button id=attack><h3 class=banner2>Attack</h3></button>");//insert attack button
+				if((villainA.health<1 && villainB.health<1)||(villainA.health<1 && villainC.health<1)||(villainB.health<1 && villainC.health<1))
+				{
+					$("#chooseVillain").empty(); //Choose Villain Text
+				}
+				else
+				{
+					$("#chooseVillain").html("- - - Choose Your Next Opponent - - -"); //Choose Villain Text
+				}
 			}
 			else
 			{
@@ -173,9 +183,20 @@ $('#villainB').click(function()
 			{
 				opponent = villainB;
 				$("#villainB").empty(); //empty villain for move to bottom
-				$("#opponentText").html("Your Chosen Opponent:");
+				$("#opponentText").html("- - - " + player.name + " VS " + villainB.name + " - - -");//Fight Text
+				$("#player").html(player.playerHtml);//add player to fight zone
+				$(".playerHealth").html(player.health+" HP");//Update health html to player object health
 				$("#opponent").html(opponent.opponentHtml); //add villain to bottom
-				$("#attackButton").html("<button id = attack><h3 class=banner2>Attack</h3></button>");
+				$("#attackAction").html("<button id=attack><h3 class=banner2>Attack</h3></button>");//insert attack button
+				if((villainA.health<1 && villainB.health<1)||(villainA.health<1 && villainC.health<1)||(villainB.health<1 && villainC.health<1))
+				{
+					$("#chooseVillain").empty(); //Choose Villain Text
+				}
+				else
+				{
+					$("#chooseVillain").html("- - - Your Next Opponent is Preparing for Battle - - -"); //Choose Villain Text
+				}
+
 			}
 			else
 			{
@@ -189,9 +210,19 @@ $('#villainC').click(function()
 			{
 				opponent = villainC;
 				$("#villainC").empty(); //empty villain for move to bottom
-				$("#opponentText").html("Your Chosen Opponent:");
+				$("#opponentText").html("- - - " + player.name + " VS " + villainC.name + " - - -");//Fight Text
 				$("#opponent").html(opponent.opponentHtml); //add villain to bottom
-				$("#attackButton").html("<button id=attack><h3 class=banner2>Attack</h3></button>");
+				$("#player").html(player.playerHtml);//add player to fight zone
+				$(".playerHealth").html(player.health+" HP");//Update health html to player object health
+				$("#attackAction").html("<button id=attack><h3 class=banner2>Attack</h3></button>");
+				if((villainA.health<1 && villainB.health<1)||(villainA.health<1 && villainC.health<1)||(villainB.health<1 && villainC.health<1))
+				{
+					$("#chooseVillain").empty(); //Choose Villain Text
+				}
+				else
+				{
+					$("#chooseVillain").html("- - - Your Next Opponent is Preparing for Battle - - -"); //Choose Villain Text
+				}
 			}
 			else
 			{
@@ -202,9 +233,9 @@ $('#villainC').click(function()
 
 
 //Attack Process
-$("#attackButton").click(function()
+$("#attackAction").click(function()
 		{
-			if(opponent.health > 0 && player.health > 0)
+			if(opponent.health > 0 && player.health > 0)//test to see if each char has health
 			{
 				opponent.health -= player.hitPoints;//update health of opponent
 				
@@ -221,8 +252,21 @@ $("#attackButton").click(function()
 
 				else if (opponent.health < 1 && player.health > 0)
 				{
-					alert("Your training has made you stronger, choose your next opponent.");
-					$("#opponent").empty(); //empty villain category
+					if(villainA.health<1 && villainB.health<1 && villainC.health<1)
+					{
+						var playAgain = confirm("You are a powerful wielder of the force! All your enemies have fallen. Play Again?")
+						if(playAgain === true)
+						{
+							location.reload();
+						}
+					}
+					else
+					{
+						alert("Your training has made you stronger, choose your next opponent.");
+						$("#opponent").empty(); //empty villain category
+						$("#chooseVillain").html("- - - Choose Your Next Opponent - - -"); //Choose Villain Text
+						$("#opponentText").html("- - - Awaiting Next Opponent - - -");//Fight Text
+					}
 				}
 				player.hitPoints+=hitInc; //increase hit points
 			}
